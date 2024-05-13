@@ -1,21 +1,15 @@
 #[lint_allow(self_transfer)]
 module cardgame::cardgame {
-    // Import necessary modules
-    use std::option::{Self, Option};
-    use sui::object::{Self, UID};
-    use sui::transfer;
-    use sui::tx_context::{Self, TxContext};
-
 
     // Define a Card object with id and power properties
-    struct Card has key, store {
+    public struct Card has key, store {
         id: UID,
         power: u8,
     }
 
 
     // Define a Player object with id and a hand that can hold a card
-    struct Player has key {
+    public struct Player has key {
         id: UID,
         hand: Option<Card>,
     }

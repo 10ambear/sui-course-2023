@@ -1,0 +1,28 @@
+--- ./sources/car.move
++++ ./sources/car.move
+@@ -7,4 +7,4 @@
+-    struct ObjectOwnedByAddress has key { id: UID }
+-    struct ObjectOwnedByObject has key, store { id: UID }
+-    struct ObjectShared has key { id: UID }
+-    struct ObjectImmutable has key { id: UID }
++    public struct ObjectOwnedByAddress has key { id: UID }
++    public struct ObjectOwnedByObject has key, store { id: UID }
++    public struct ObjectShared has key { id: UID }
++    public struct ObjectImmutable has key { id: UID }
+--- ./sources/shop.move
++++ ./sources/shop.move
+@@ -9 +9 @@
+-    struct ShopAdminCap has key { id: UID }
++    public struct ShopAdminCap has key { id: UID }
+@@ -11 +11 @@
+-    struct Tesla has key { 
++    public struct Tesla has key { 
+@@ -18 +18 @@
+-    struct Autopilot has key, store { 
++    public struct Autopilot has key, store { 
+@@ -23 +23 @@
+-    struct Jarvis has key { 
++    public struct Jarvis has key { 
+@@ -28 +28 @@
+-    struct Shop has key { 
++    public struct Shop has key { 

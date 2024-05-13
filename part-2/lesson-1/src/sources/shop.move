@@ -6,41 +6,39 @@ module car::shop{
     use std::string::{Self, String};
     use std::option::{Self, Option};
 
-    struct ShopAdminCap has key { id: UID }
+    public struct ShopAdminCap has key { id: UID }
 
-    struct Tesla has key { 
+    public struct Tesla has key { 
         id: UID,
-        type: String,
+        tesla_type: String,
         speed: u32,
         autopilot: Option<Autopilot>, // optional field
     }
 
-    struct Autopilot has key, store { 
+    public struct Autopilot has key, store { 
         id: UID,
         level: u32,
     }
 
-    struct Jarvis has key { 
+    public struct Jarvis has key { 
         id: UID,
         language: String, 
     }
 
-    struct Shop has key { 
+    public struct Shop has key { 
         id: UID,
     }
     
     // we will initialize this contract with a ShopAdminCap being the deployer
     fun init(ctx: &mut TxContext) {
-        transfer::transfer(
-            ShopAdminCap {id: object::new(ctx)}
-        , tx_context::sender(ctx))
+        transfer::transfer(ShopAdminCap {id: object::new(ctx)} , tx_context::sender(ctx))
     }
 
     // admin can create a tesla for the buyer
     public entry fun create_tesla(_: &ShopAdminCap, buyer:address, name:vector<u8>, ctx: &mut TxContext) {
         let tesla = Tesla {
             id: object::new(ctx),
-            type: string::utf8(name),
+            tesla_type: string::utf8(name),
             speed: 220,
             autopilot:option::none(),
         };

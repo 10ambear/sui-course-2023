@@ -1,0 +1,28 @@
+--- ./sources/bread_store.move
++++ ./sources/bread_store.move
+@@ -9 +9 @@
+-    struct Flavor has store {
++    public struct Flavor has store {
+@@ -13 +13 @@
+-    struct Bread has key {
++    public struct Bread has key {
+@@ -22 +22 @@
+-        let flavor: String = string::utf8(b"original");
++        let mut flavor: String = string::utf8(b"original");
+--- ./sources/sandwich.move
++++ ./sources/sandwich.move
+@@ -10 +10 @@
+-    struct Ham has key {
++    public struct Ham has key {
+@@ -14 +14 @@
+-    struct Bread has key {
++    public struct Bread has key {
+@@ -18 +18 @@
+-    struct Sandwich has key {
++    public struct Sandwich has key {
+@@ -23 +23 @@
+-    struct GroceryOwnerCapability has key {
++    public struct GroceryOwnerCapability has key {
+@@ -28 +28 @@
+-    struct Grocery has key {
++    public struct Grocery has key {

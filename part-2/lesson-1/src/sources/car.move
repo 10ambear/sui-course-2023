@@ -4,10 +4,10 @@ module car::car{
     use sui::tx_context::{Self,TxContext};
     use sui::dynamic_object_field as ofield;
 
-    struct ObjectOwnedByAddress has key { id: UID }
-    struct ObjectOwnedByObject has key, store { id: UID }
-    struct ObjectShared has key { id: UID }
-    struct ObjectImmutable has key { id: UID }
+    public struct ObjectOwnedByAddress has key { id: UID }
+    public struct ObjectOwnedByObject has key, store { id: UID }
+    public struct ObjectShared has key { id: UID }
+    public struct ObjectImmutable has key { id: UID }
 
     public entry fun create_object_owned_by_an_address(ctx: &mut TxContext) {
         transfer::transfer({

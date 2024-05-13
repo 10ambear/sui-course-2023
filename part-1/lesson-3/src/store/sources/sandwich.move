@@ -2,43 +2,44 @@
 module store::sandwich {
     use sui::balance::{Self, Balance};
     use sui::coin::{Self, Coin};
-    use sui::object::{Self, UID};
     use sui::sui::SUI;
-    use sui::transfer;
-    use sui::tx_context::{Self, TxContext};
 
-    struct Ham has key {
-        id: UID
-    }
+    // === Errors ===
+    /// Not enough funds to pay for the goods
+    const EInsufficientFunds: u64 = 0;
+    /// Nothing to withdraw
+    const ENoProfits: u64 = 1;
 
-    struct Bread has key {
-        id: UID
-    }
-
-    struct Sandwich has key {
-        id: UID,
-    }
-
-    // This Capability allows the owner to withdraw profits
-    struct GroceryOwnerCapability has key {
-        id: UID
-    }
-
-    // Grocery is created on module init
-    struct Grocery has key {
-        id: UID,
-        profits: Balance<SUI>
-    }
-
+    // === Constants ===
     /// Price for ham
     const HAM_PRICE: u64 = 10;
     /// Price for bread
     const BREAD_PRICE: u64 = 2;
 
-    /// Not enough funds to pay for the goods
-    const EInsufficientFunds: u64 = 0;
-    /// Nothing to withdraw
-    const ENoProfits: u64 = 1;
+    // === Structs ===
+    public struct Ham has key {
+        id: UID
+    }
+
+    public struct Bread has key {
+        id: UID
+    }
+
+    public struct Sandwich has key {
+        id: UID,
+    }
+
+    // This Capability allows the owner to withdraw profits
+    public struct GroceryOwnerCapability has key {
+        id: UID
+    }
+
+    // Grocery is created on module init
+    public struct Grocery has key {
+        id: UID,
+        profits: Balance<SUI>
+    }
+
 
     /// On module init, create a grocery
     fun init(ctx: &mut TxContext) {

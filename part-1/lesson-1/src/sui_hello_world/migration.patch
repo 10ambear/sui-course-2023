@@ -1,0 +1,5 @@
+--- ./sources/hello_world.move
++++ ./sources/hello_world.move
+@@ -8 +8 @@
+-    struct HelloWorldObject has key {
++    public struct HelloWorldObject has key {

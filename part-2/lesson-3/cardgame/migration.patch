@@ -1,0 +1,8 @@
+--- ./sources/cardgame.move
++++ ./sources/cardgame.move
+@@ -11 +11 @@
+-    struct Card has key, store {
++    public struct Card has key, store {
+@@ -18 +18 @@
+-    struct Player has key {
++    public struct Player has key {
